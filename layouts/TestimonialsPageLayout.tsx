@@ -4,6 +4,8 @@ import PageHeading from "@/components/PageHeading";
 import { testimonials } from "@/data";
 import { cn } from "@/lib/utils";
 import styles from "./layouts.module.css";
+import Image from "next/image";
+
 const TestimonialsPageLayout = () => {
   return (
     <div className='pt-20 relative z-10'>
@@ -19,9 +21,12 @@ const TestimonialsPageLayout = () => {
                 <div className='relative z-20 mt-6 flex flex-row items-center'>
                   {/* add this div for the profile img */}
                   <div className='me-3 h-16 w-16 rounded-full overflow-hidden'>
-                    <img
+                    <Image
                       src={"https://res.cloudinary.com/dta8uzpup/image/upload/v1719346276" + item.img}
                       alt='profile'
+                      width={64}
+                      height={64}
+                      className='h-16 w-16 rounded-full object-cover'
                     />
                   </div>
                   <span className='flex flex-col gap-1'>

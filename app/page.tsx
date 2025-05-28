@@ -20,8 +20,9 @@ const Home = () => {
       <Hero />
       <Grid />
       <ChapterSection />
-      <Testimonials />
+      <Testimonials />   
       <GlobeSection />
+
     </div>
   );
 };

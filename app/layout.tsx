@@ -27,6 +27,9 @@ export default function RootLayout({
     <html lang='en' suppressHydrationWarning>
       <head>
         <link rel='icon' href='/jsm-logo.png' sizes='any' />
+        <link rel="preconnect" href="https://cloudfunctions.net" />
+        <link rel="preconnect" href="https://vercel.app" />
+        <link rel="preload" as="image" href="/HomeScreen.png" />
         <meta property='og:title' content='Elixir Tech Community' />
         <meta
           property='og:description'
@@ -38,6 +41,7 @@ export default function RootLayout({
         <ThemeProvider attribute='class' defaultTheme='dark' enableSystem disableTransitionOnChange>
           <Toaster />
           <ClientAppLayout>{children}</ClientAppLayout>
+
         </ThemeProvider>
       </body>
     </html>

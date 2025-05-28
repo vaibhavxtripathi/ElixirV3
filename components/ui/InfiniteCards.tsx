@@ -2,6 +2,8 @@
 
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 export const InfiniteMovingCards = ({
   items,
@@ -72,6 +74,7 @@ export const InfiniteMovingCards = ({
         "scroller relative z-20 w-screen overflow-hidden  [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
         className,
       )}
+      style={{ willChange: 'transform, opacity' }}
     >
       <ul
         ref={scrollerRef}
@@ -110,10 +113,12 @@ export const InfiniteMovingCards = ({
               <div className='relative z-20 mt-6 flex flex-row items-center'>
                 {/* add this div for the profile img */}
                 <div className='me-3'>
-                  <img
+                  <Image
                     src={"https://res.cloudinary.com/dta8uzpup/image/upload/v1719346276" + item.img}
                     alt='profile'
-                    className='h-16 w-16 rounded-full'
+                    width={64}
+                    height={64}
+                    className='h-16 w-16 rounded-full object-cover'
                   />
                 </div>
                 <span className='flex flex-col gap-1'>

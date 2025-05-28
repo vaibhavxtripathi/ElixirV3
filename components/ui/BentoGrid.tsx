@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
+import Image from "next/image";
+import dynamic from "next/dynamic";
+import { motion } from "framer-motion";
 
 // Also install this npm i --save-dev @types/react-lottie
-import Lottie from "react-lottie";
+const Lottie = dynamic(() => import("react-lottie"), { ssr: false });
 
 import { cn } from "@/lib/utils";
 
@@ -85,16 +88,20 @@ export const BentoGridItem = ({
         background: "rgb(4,7,29)",
         backgroundColor:
           "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
+        willChange: 'transform, opacity',
       }}
     >
       {/* add img divs */}
       <div className={`${id === 6 && "flex justify-center"} h-full`}>
         <div className="w-full h-full absolute">
           {img && (
-            <img
+            <Image
               src={img}
               alt={img}
+              fill
               className={cn(imgClassName, "object-cover object-center ")}
+              sizes="(max-width: 768px) 100vw, 33vw"
+              priority={id === 1}
             />
           )}
         </div>
@@ -103,11 +110,12 @@ export const BentoGridItem = ({
             } `}
         >
           {spareImg && (
-            <img
+            <Image
               src={spareImg}
               alt={spareImg}
-              //   width={220}
+              fill
               className="object-cover object-center w-full h-full"
+              sizes="(max-width: 768px) 100vw, 33vw"
             />
           )}
         </div>

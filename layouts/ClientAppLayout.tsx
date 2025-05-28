@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 import appStore from "@/store/store";
 import { FloatingNav } from "@/components/ui/FloatingNavbar";
 import { navItems } from "@/data";
+import { usePathname } from "next/navigation";
 
 function BackDrop() {
   return (
@@ -27,17 +28,19 @@ function BackDrop() {
   );
 }
 export default function ClientAppLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = usePathname();
+  const footer = !pathname.startsWith("/dashboard");
   return (
     <Provider store={appStore}>
       <FloatingNav navItems={navItems} />
       <main className='relative bg-black-100 flex justify-center items-center flex-col overflow-hidden mx-auto sm:px-10 px-5'>
         <div className='max-w-7xl w-full mt-10'>
           {children}
-          <Footer />
+          {footer && <Footer />}
           <BackDrop />
         </div>
       </main>
